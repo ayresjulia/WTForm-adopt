@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+<!-- break -->
+{% block title %}
+<title>Home page</title>
+{% endblock %}
+<!-- break -->
+{% block content %}
+<h1 class="display-4 text-center">Adoption agency</h1>
+<div class="container">
+	<div class="row">
+		{% for pet in pets %}
+		<div class="col-sm-6 col-md-4">
+			<div class="card" style="width: 18rem">
+				<img src="{{pet.photo_url}}" class="card-img-top" />
+				<div class="card-body">
+					<h5 class="card-title">{{pet.name}}</h5>
+					<p class="card-text">
+						<b>
+							{% if pet.available == True %}
+							<p style="color: green">Available!</p>
+							{% else %}
+							<p style="color: red">Not Available</p>
+							{% endif %}
+						</b>
+					</p>
+					<a href="/{{pet.id}}" class="btn btn-primary">Get more details</a>
+				</div>
+			</div>
+		</div>
+		{% endfor %}
+    </div>
+</br>
+	<a href="/add" class="btn btn-primary">Add a Pet</a>
+</div>
+
+{% endblock %}
